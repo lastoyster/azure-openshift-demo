@@ -12,11 +12,6 @@ Use the Azure CLI to provision an OpenShift cluster:
 
 Fetch cluster credentials and log in with the oc CLI:
 
-az aro list-credentials --name myAROCluster --resource-group myResourceGroup
-
-oc login https://api.<cluster_name>.<region>.aroapp.io:6443 \
-  -u kubeadmin -p <password>
-
 📦 Step 3: Enable OpenShift Virtualization
 
 Install the OpenShift Virtualization Operator either via OperatorHub in the OpenShift Web Console or by applying the CR manifest:
