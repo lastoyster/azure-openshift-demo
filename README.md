@@ -8,13 +8,6 @@ OC(OpenShift CLI) and virtctl installed locally
 
 Use the Azure CLI to provision an OpenShift cluster:
 
-az aro create \
-  --resource-group myResourceGroup \
-  --name myAROCluster \
-  --vnet myVnet \
-  --master-subnet myMasterSubnet \
-  --worker-subnet myWorkerSubnet
-
 🔑 Step 2: Log In to OpenShift
 
 Fetch cluster credentials and log in with the oc CLI:
