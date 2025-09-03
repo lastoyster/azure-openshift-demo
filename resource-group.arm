@@ -1,0 +1,12 @@
+
+az aro list-credentials --name myAROCluster --resource-group myResourceGroup
+
+oc login https://api.<cluster_name>.<region>.aroapp.io:6443 \
+  -u kubeadmin -p <password>
+
+az aro create \
+  --resource-group myResourceGroup \
+  --name myAROCluster \
+  --vnet myVnet \
+  --master-subnet myMasterSubnet \
+  --worker-subnet myWorkerSubnet
