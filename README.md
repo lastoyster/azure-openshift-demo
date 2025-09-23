@@ -21,60 +21,6 @@ Install the OpenShift Virtualization Operator either via OperatorHub in the Open
 1. Define the VM Manifest
 Save the following YAML as rhel9-vm.yaml:
 
-apiVersion: kubevirt.io/v1
-kind: VirtualMachine
-metadata:
-  name: rhel9-vm
-  labels:
-    app: rhel9-vm
-spec:
-  running: false
-  dataVolumeTemplates:
-    - metadata:
-        name: rhel9-vm-dv
-      spec:
-        sourceRef:
-          kind: DataSource
-          name: rhel9
-          namespace: openshift-virtualization-os-images
-        storage:
-          resources:
-            requests:
-              storage: 30Gi
-  template:
-    spec:
-      domain:
-        cpu:
-          cores: 2
-        resources:
-          requests:
-            memory: 8Gi
-        devices:
-          disks:
-            - name: rootdisk
-              disk:
-                bus: virtio
-            - name: cloudinitdisk
-              disk:
-                bus: virtio
-          interfaces:
-            - name: default
-              masquerade: {}
-      networks:
-        - name: default
-          pod: {}
-      volumes:
-        - name: rootdisk
-          dataVolume:
-            name: rhel9-vm-dv
-        - name: cloudinitdisk
-          cloudInitNoCloud:
-            userData: |
-              #cloud-config
-              user: cloud-user
-              password: "MySecurePass123"
-              chpasswd: { expire: False }
-
 2. Deploy the VM
 oc create -f rhel9-vm.yaml
 
